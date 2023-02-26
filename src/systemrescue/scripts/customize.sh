@@ -31,14 +31,12 @@ authorize_keys()
 # Generated from Packer.
 ---
 sysconfig:
-    authorized_keys:
+  authorized_keys:
 EOF
 
     cat "${_keys_f}" | while read name key_spec
     do
-        cat >> "${_conf_f}" << EOF
-        "${name}": "${key_spec}"
-EOF
+        echo "    \"${name}\": \"${key_spec}\"" >> "${_conf_f}"
     done
 
     return ${?}
