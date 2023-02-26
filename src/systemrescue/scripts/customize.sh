@@ -30,6 +30,9 @@ authorize_keys()
     cat > "${_conf_f}" << EOF
 # Generated from Packer.
 ---
+global:
+  nofirewall: true
+
 sysconfig:
   authorized_keys:
 EOF
