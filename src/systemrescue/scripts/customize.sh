@@ -25,7 +25,7 @@ set -x
 authorize_keys()
 {
     _keys_f="${1}"
-    _conf_f="${2}/iso_add/sysrescue.d/000-authorized-keys.yaml"
+    _conf_f="${2}/iso_add/sysrescue.d/150-ssh-authorized-keys.yaml"
 
     cat > "${_conf_f}" << EOF
 # Generated from Packer.
