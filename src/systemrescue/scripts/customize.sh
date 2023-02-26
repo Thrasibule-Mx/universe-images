@@ -25,20 +25,21 @@ set -x
 authorize_keys()
 {
     _keys_f="${1}"
-    _conf_f="${2}/iso_add/sysrescue.d/000-authorized-keys.yaml"
+    _conf_f="${2}/iso_add/sysrescue.d/150-ssh-authorized-keys.yaml"
 
     cat > "${_conf_f}" << EOF
 # Generated from Packer.
 ---
+global:
+  nofirewall: true
+
 sysconfig:
-    authorized_keys:
+  authorized_keys:
 EOF
 
     cat "${_keys_f}" | while read name key_spec
     do
-        cat >> "${_conf_f}" << EOF
-        "${name}": "${key_spec}"
-EOF
+        echo "    \"${name}\": \"${key_spec}\"" >> "${_conf_f}"
     done
 
     return ${?}
