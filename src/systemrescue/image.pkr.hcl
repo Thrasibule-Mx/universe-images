@@ -43,7 +43,7 @@ variable "recipe_directory" {
 
 variable "version" {
     type = string
-    default = "9.06"
+    default = "13.02"
     description = "Version of the SystemRescue ISO to use when building the image."
 }
 
